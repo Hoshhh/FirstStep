@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const About = () => {
+const Hero = () => {
   return (
     <div id="about" className="w-full md:h-screen p-2 flex items-center md:py-16 py-32">
       <div className="max-w-[1240px] m-auto md:grid grid-cols-2 gap-8">
@@ -29,4 +29,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Hero;
