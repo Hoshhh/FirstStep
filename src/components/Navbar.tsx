@@ -39,7 +39,7 @@ const Navbar = () => {
             <Link href="/#about">
               <li className="ml-10 text-sm uppercase hover:border-b">About</li>
             </Link>
-            <Link href="/#projects">
+            <Link href="/#developer">
               <li className="ml-10 text-sm uppercase hover:border-b">
                 Developers
               </li>
