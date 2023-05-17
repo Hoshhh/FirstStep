@@ -35,8 +35,28 @@ const DevTab = () => {
 
 const RecruitTab = () => {
     return (
-        <div className="w-full grid grid-cols-2 gap-0">
-            This is the recruiter tab
+        <div id="developer" className="w-full md:grid grid-cols-2 gap-4">
+            <div>
+                <h3 className="tracking-widest uppercase text-slate-800">Features</h3>
+                <ul className="list-disc">
+                    <li className="py-2">Gain access to an entire database full of candidates</li>
+                    <li className="py-2">Freely view any applicant's profile.</li>
+                    <li className="py-2">Filter through applicants based on a variety of options.</li>
+                    <li className="py-2">Easily download and view applicant's resumes/cv's.</li>
+                    <li className="py-2">You will be showcased the most active developers in the community.</li>
+                    <li className="py-2">If you find that an applicant has been recently hired, you can mark them as hired so you will see different candidates.</li>
+                </ul>
+            </div>
+            <div className="flex flex-col md:items-center md:justify-center md:text-center">
+                <h3 className="tracking-widest uppercase text-slate-800 md:mt-0 mt-8">How it Works</h3>
+                <p className="py-1">
+                    You will gain access to all developers signed up and looking for junior level positions! This allows both you and the candidate to understand the level of expertise required to do the job.
+                </p>
+                <p className="py-1">
+                    If you enjoy making an active effort in your career as a recruiter, this app is for you!
+                </p>
+                <Image src="/assets/code.png" width={400} height={400} alt="/" className="mt-4 rounded-xl shadow-xl shadow-gray-400"/>
+            </div>
         </div>
     )
 }
