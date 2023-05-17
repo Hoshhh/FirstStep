@@ -46,7 +46,7 @@ const Developers = () => {
 
   return (
     <div id="projects" className="w-full">
-      <div className="max-w-[1240px] mx-auto px-2 py-4 md:py-8">
+      <div className="max-w-[1240px] mx-auto px-2 py-4 md:py-8 mb-12">
         <p className="text-xl tracking-widest uppercase text-slate-800">
           Solutions for both Developers and Recruiters
         </p>
