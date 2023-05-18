@@ -44,13 +44,13 @@ const Navbar = () => {
                 Developers
               </li>
             </Link>
-            <Link href="/games">
+            <Link href="/#developer">
               <li className="ml-10 text-sm uppercase hover:border-b">
                 Recruiters
               </li>
             </Link>
           </ul>
-          <Link href="/games">
+          <Link href="/">
             <button className="ml-10  p-2 text-sm uppercase rounded-full text-slate-100 bg-sky-700">Sign Up</button>
           </Link>
           <div onClick={handleNav} className="md:hidden">
