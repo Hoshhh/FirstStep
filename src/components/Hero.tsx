@@ -8,9 +8,12 @@ const Hero = () => {
     <div id="about" className="w-full md:h-screen p-2 flex items-center md:py-8 py-24">
       <div className="max-w-[1240px] m-auto md:grid grid-cols-2 gap-8">
         <div className="col-span-1 flex flex-col items-center justify-center py-4">
-            <h2 className="py-1 text-center leading-snug">A Platform For <span className="text-sky-700">Junior Developers</span> And A Tool For Companies To Find Talent</h2>
+            <h2 className="py-1 text-center leading-snug">Empowering <span className="text-sky-700">Junior Developers</span>, Empowering Your <span className="text-sky-700">Business</span></h2>
             <p className="text-slate-700 text-center">
-                Bringing eyes to talented new developers and finding a good fit for both party’s.
+                A dedicated platform for junior developers to showcase their skills.
+            </p>
+            <p className="text-slate-700 text-center">
+              Streamline your hiring process with our powerful tools.
             </p>
             <form action="" className="text-center pt-2">
               <input type="email" className="p-2 mr-4 rounded-xl outline-sky-700 text-center" placeholder="Enter your email"/>
