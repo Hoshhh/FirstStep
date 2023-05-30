@@ -7,7 +7,7 @@ import { authOptions } from './api/auth/[...nextauth]/route'
 import prisma from '../app/lib/prismadb'
 import { NextApiRequest } from 'next'
 
-export default async function Home(req: NextApiRequest) {
+export default async function Home() {
   const session = await getServerSession(authOptions)
 
   const currentUser = await prisma.user.findUnique({
