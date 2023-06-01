@@ -16,17 +16,42 @@ export const authOptions: NextAuthOptions = {
         }),
     ],
     callbacks: {
-        jwt({ token, account, user }) {
+        async jwt({ token, account, user }) {
+            const dbUser = await prisma.user.findFirst({
+                where: {
+                    id: token.id
+                }
+            })
+
+            if (!dbUser) {
+                token.id = user!.id
+                return token
+            }
+
+            return {
+                id: dbUser.id,
+                name: dbUser.name,
+                role: dbUser.role,
+                email: dbUser.email,
+                image: dbUser.image
+            }
+
+            /*
             if (account) {
             token.accessToken = account.access_token
             token.id = user?.id
+            token.role = user.role
             }
-            return token
+            return token*/
         },
-        session({ session, token }) {
-            // I skipped the line below coz it gave me a TypeError
-            // session.accessToken = token.accessToken;
-            session.user.id = token.id;
+        async session({ session, token }) {
+            if (token) {
+                session.user.id = token.id
+                session.user.name = token.name
+                session.user.role = token.role
+                session.user.email = token.email
+                session.user.image = token.image
+            }
 
             return session;
         },

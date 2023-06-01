@@ -16,9 +16,9 @@ export default async function Home() {
     }
   })
 
-  console.log(currentUser)
+  //console.log(currentUser)
 
-  console.log(session)
+  //console.log(session)
   return (
     <div>
       <Hero />
