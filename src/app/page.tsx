@@ -9,7 +9,7 @@ import { NextApiRequest } from 'next'
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
-
+  
   const currentUser = await prisma.user.findUnique({
     where: {
       id: session?.user.id
@@ -18,7 +18,7 @@ export default async function Home() {
 
   //console.log(currentUser)
 
-  //console.log(session)
+  console.log(session)
   return (
     <div>
       <Hero />

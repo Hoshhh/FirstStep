@@ -26,10 +26,26 @@ model User {
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
+  profile       Profile?
 
   role UserRole @default(USER)
 
   @@map("users")
+}
+
+model Profile {
+  userId       String  @unique
+  user         User    @relation(fields: [userId], references: [id])
+  firstName    String?
+  lastName     String?
+  position     String?
+  about        String?
+  skills       String?
+  links        String?
+  availability String?
+  workplace    String?
+
+  @@index([userId])
 }
 
 model Account {
