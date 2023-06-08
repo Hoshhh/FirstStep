@@ -8,7 +8,7 @@ const page = async () => {
       throw new Error("This page is for Recruiters only.")
     }
 
-    console.log(session)
+    //console.log(session)
 
   return (
     <div className="pt-32">Recruiter Dashboard: {session.user.role}</div>

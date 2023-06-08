@@ -10,6 +10,8 @@ export default async function page({ params }: {
         }
     })
 
+    console.log(currentUser?.firstName)
+
   return (
     <div className="pt-32">
       <p className='py-4'>
@@ -20,6 +22,9 @@ export default async function page({ params }: {
       </p>
       <p className='py-4'>
         Created At: {currentUser?.createdAt.toString()}
+      </p>
+      <p className='py-4'>
+        First Name: {currentUser?.position}
       </p>
     </div>
   )
