@@ -1,10 +1,16 @@
 import React from 'react'
 import getUser from '@/app/lib/getUser'
+import prisma from '../../../lib/prismadb'
 
 export default async function ProfileHeader({ params }: {
     params: { id: string }
 }) {
-    const currentUser = await getUser({params})
+    const currentUser = await prisma.user.findUnique({
+      where: {
+        id: params.id
+      }
+    })
+    //console.log(params)
 
   return (
     <div className='flex flex-col items-center pt-16 p-4 border-b-2'>
