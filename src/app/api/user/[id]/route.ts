@@ -5,7 +5,6 @@ export async function GET(request: Request, { params }: any) {
     const { searchParams } = new URL(request.url)
     const id = searchParams.get('id')
 
-    console.log(params)
     try {
         const currentUser = await prisma.user.findUnique({
             where: {

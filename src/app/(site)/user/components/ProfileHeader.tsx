@@ -10,7 +10,6 @@ export default async function ProfileHeader({ params }: {
         id: params.id
       }
     })
-    //console.log(params)
 
   return (
     <div className='flex flex-col items-center pt-16 p-4 border-b-2'>
