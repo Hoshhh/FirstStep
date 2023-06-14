@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import prisma from '@/app/lib/prismadb'
+import cors from '@/app/lib/cors'
 
 export async function GET(request: Request, { params }: any) {
     const { searchParams } = new URL(request.url)
@@ -12,8 +13,23 @@ export async function GET(request: Request, { params }: any) {
             }
         })
 
-        return new NextResponse(JSON.stringify(currentUser))
+        return cors(
+            request,
+            new Response(JSON.stringify(currentUser), {
+            status: 200,
+            headers: { "Content-Type": "application/json" },
+            })
+        );
     } catch (error) {
         return new NextResponse("Database error", {status: 500})
     }
+}
+
+export async function OPTIONS(request: Request) {
+  return cors(
+    request,
+    new Response(null, {
+      status: 204,
+    })
+  );
 }
