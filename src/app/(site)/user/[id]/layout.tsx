@@ -1,14 +1,15 @@
+import React from 'react'
 import ProfileHeader from '../components/ProfileHeader'
 
-
-
-export default async function Profile({ params }: {
+export default async function UserLayout({
+    children,
+    params
+}: {
+    children: React.ReactNode,
     params: { id: string }
 }) {
-  const data = await fetch(`http://127.0.0.1:3000/api/user/${params.id}`)
-  const currentUser = await data.json()
-
-  //console.log(currentUser.image)
+    const data = await fetch(`http://127.0.0.1:3000/api/user/${params.id}`)
+    const currentUser = await data.json()
 
   return (
     <div className="md:grid md:grid-cols-4 md:gap-4 md:h-screen">
@@ -29,7 +30,7 @@ export default async function Profile({ params }: {
         </div>
       </div>
       <div className='flex col-span-3 justify-center items-center'>
-
+        {children}
       </div>
     </div>
   )

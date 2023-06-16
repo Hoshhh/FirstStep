@@ -2,7 +2,7 @@ import React from 'react'
 import getUser from '@/app/lib/getUser'
 import prisma from '../../../lib/prismadb'
 
-export default async function ProfileHeader(props: { img: any }) {
+export default async function ProfileHeader(props: { img: string }) {
   console.log(props.img)
 
   return (
