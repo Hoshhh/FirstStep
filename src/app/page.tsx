@@ -10,7 +10,7 @@ import Navbar from '@/components/Navbar'
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
-  
+  console.log(session)
   /*
   const currentUser = await prisma.user.findUnique({
     where: {
