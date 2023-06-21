@@ -16,7 +16,7 @@ export default async function AboutInfo(props: {id: string}) {
           </div>
         </div>
         <p className='text-sm m-4'>
-          All about me!
+          {currentUser.about}
         </p>
     </>
   )

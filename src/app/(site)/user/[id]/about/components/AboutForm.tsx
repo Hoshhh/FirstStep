@@ -1,10 +1,29 @@
-import React from 'react'
+'use client'
+import React, { FormEventHandler, useState } from 'react'
 
 //Kept on the server
-export default function AboutForm() {
+export default function AboutForm({id}: {id: string}) {
+  const [updatedAbout, setUpdatedAbout] = useState("")
+
+  const handleSubmit:FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault()
+    await fetch(`http://127.0.0.1:3000/api/user/${id}`, {
+      method: 'PATCH',                                                              
+      body: JSON.stringify({
+        about: updatedAbout 
+      })                             
+    })
+    setUpdatedAbout("")
+  }
   return (
-    <form action="" className='mt-4 flex flex-col'>
-        <textarea name="" id="" cols={70} rows={10} className='rounded p-2 text-xs text-slate-800 bg-white' />
+    <form onSubmit={handleSubmit} className='mt-4 flex flex-col'>
+        <textarea 
+          value={updatedAbout} 
+          onChange={(e) => setUpdatedAbout(e.target.value)}
+          cols={70} 
+          rows={10} 
+          className='rounded p-2 text-xs text-slate-800 bg-white' 
+        />
         <div className='flex justify-end mt-4'>
             <button 
                 type='submit'
