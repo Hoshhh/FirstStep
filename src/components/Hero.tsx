@@ -25,13 +25,13 @@ const Hero = () => {
               </p>
             </div>
         </div>
-        <div className="flex items-center justify-center p-4 hover:scale-105 ease-in duration-300">
+        <div className="flex items-center justify-center hover:scale-105 ease-in duration-300">
           <Image
             className="rounded-xl shadow-xl shadow-gray-400"
-            src="/assets/devportal.png"
-            alt="/"
-            width={600}
-            height={600}
+            src="/assets/recruit3.jpg"
+            alt="developer profile"
+            width={500}
+            height={500}
           />
         </div>
       </div>

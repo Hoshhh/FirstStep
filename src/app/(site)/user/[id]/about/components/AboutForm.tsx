@@ -1,19 +1,34 @@
 'use client'
-import React, { FormEventHandler, useState } from 'react'
+import React, { FormEventHandler, useState, useEffect } from 'react'
 
-//Kept on the server
 export default function AboutForm({id}: {id: string}) {
   const [updatedAbout, setUpdatedAbout] = useState("")
+  const [showError, setShowError] = useState(false)
+  const characters = updatedAbout.length
+  const maxCharacters = 1000
+
+  useEffect(() => {
+    if (characters > maxCharacters) {
+      setShowError(true)
+    } else {
+      setShowError(false)
+    }
+  }, [characters])
 
   const handleSubmit:FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
-    //const formattedAbout = updatedAbout.replace(/\r?\n/g, '\n');
-    await fetch(`http://localhost:3000/api/user/${id}`, {
-      method: 'PATCH',                                                              
-      body: JSON.stringify({
-        about: updatedAbout 
-      })                             
-    })
+    
+    if (characters <= maxCharacters) {
+      await fetch(`http://localhost:3000/api/user/${id}`, {
+        method: 'PATCH',                                                              
+        body: JSON.stringify({
+          about: updatedAbout 
+        })                             
+      })
+      setShowError(false)
+    } else {
+      setShowError(true)
+    }
     setUpdatedAbout("")
   }
   return (
@@ -25,6 +40,12 @@ export default function AboutForm({id}: {id: string}) {
           rows={10} 
           className='rounded p-2 text-xs text-slate-800 bg-white' 
         />
+        <div className='flex justify-start text-xs'>
+          <p>{`${characters}/${maxCharacters}`}</p>
+          {
+            showError ? <h6 className='text-xs text-red-500 ml-4'>You have too many characters. Your changes won&apos;t be saved.</h6> : ""
+          }
+        </div>
         <div className='flex justify-end mt-4'>
             <button 
                 type='submit'

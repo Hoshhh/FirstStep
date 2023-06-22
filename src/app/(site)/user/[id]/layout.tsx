@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { FaSignOutAlt } from 'react-icons/fa'
 
 export default async function UserLayout({
     children,
@@ -22,15 +23,18 @@ export default async function UserLayout({
         </div>
         <div className='pt-12 h-full'>
           <ul className='grid grid-rows-5 content-between h-full'>
-            <Link href={`/user/${params.id}/about`}>About</Link>
+            <Link href={`/user/${params.id}/about`} >About</Link>
             <li>Technical Skills</li>
             <li>Links</li>
             <li>Availability</li>
             <li>CV/Resume</li>
           </ul>
         </div>
-        <div className='mb-12 mt-8'>
-          Sign Out
+        <div className='flex mb-12 mt-8 items-center'>
+          <button className='flex items-center p-2 border-2 border-slate-200 rounded-full text-sky-800'>
+            <FaSignOutAlt size={30} />
+            <p className='ml-2'>Sign out</p>
+          </button>
         </div>
       </div>
       <div className='flex col-span-3 justify-center items-center'>

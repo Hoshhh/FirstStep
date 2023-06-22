@@ -29,7 +29,7 @@ model User {
   firstName     String?
   lastName      String?
   position      String?
-  about         String?
+  about         String?   @db.VarChar(1000)
   skills        String?
   links         String?
   availability  String?

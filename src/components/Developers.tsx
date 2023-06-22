@@ -27,7 +27,7 @@ const DevTab = () => {
                     As a developer, you will only be able to see and update your own profile. 
                     Just focus on your skills as a developer and keep your profile updated! 
                 </p>
-                <Image src="/assets/code.png" width={400} height={400} alt="/" className="mt-4 rounded-xl shadow-xl shadow-gray-400"/>
+                <Image src="/assets/code2.png" width={400} height={400} alt="/" className="mt-4 rounded-xl shadow-xl shadow-gray-400"/>
             </div>
         </div>
     )
@@ -55,7 +55,7 @@ const RecruitTab = () => {
                 <p className="py-1">
                     If you enjoy making an active effort in your career as a recruiter, this app is for you!
                 </p>
-                <Image src="/assets/code.png" width={400} height={400} alt="/" className="mt-4 rounded-xl shadow-xl shadow-gray-400"/>
+                <Image src="/assets/code2.png" width={400} height={400} alt="/" className="mt-4 rounded-xl shadow-xl shadow-gray-400"/>
             </div>
         </div>
     )
