@@ -15,7 +15,7 @@ export default async function AboutInfo(props: {id: string}) {
             <h4 className='pt-1 font-normal text-slate-400 text-xs'>Full Stack Web Developer</h4>
           </div>
         </div>
-        <p className='text-sm m-4'>
+        <p className='text-sm m-4 whitespace-pre-wrap'>
           {currentUser.about}
         </p>
     </>

@@ -7,7 +7,8 @@ export default function AboutForm({id}: {id: string}) {
 
   const handleSubmit:FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
-    await fetch(`http://127.0.0.1:3000/api/user/${id}`, {
+    //const formattedAbout = updatedAbout.replace(/\r?\n/g, '\n');
+    await fetch(`http://localhost:3000/api/user/${id}`, {
       method: 'PATCH',                                                              
       body: JSON.stringify({
         about: updatedAbout 

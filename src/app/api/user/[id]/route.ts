@@ -30,6 +30,7 @@ export async function PATCH(request: Request, { params }: any) {
   const body:User = await request.json();
 
   try {
+    //const aboutWithNewlines = body.about?.replace(/\r?\n/g, '\n');
     const aboutUpdate = await prisma.user.update({
       where: { id: params.id },
       data: {
