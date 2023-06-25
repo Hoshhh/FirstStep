@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default async function AboutInfo(props: {id: string}) {
+export default async function SkillsInfo(props: {id: string}) {
 
     const data = await fetch(`http://127.0.0.1:3000/api/user/${props.id}`)
     const currentUser = await data.json()
@@ -15,7 +15,7 @@ export default async function AboutInfo(props: {id: string}) {
           </div>
         </div>
         <p className='text-sm m-4 whitespace-pre-wrap'>
-          {currentUser.about}
+          List of Technical Skills
         </p>
     </>
   )
