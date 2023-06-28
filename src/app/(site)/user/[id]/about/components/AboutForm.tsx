@@ -40,13 +40,11 @@ export default function AboutForm({id}: {id: string}) {
     setUpdatedAbout("")
   }
   return (
-    <form onSubmit={handleSubmit} className='mt-4 flex flex-col'>
+    <form onSubmit={handleSubmit} className='mt-4 flex flex-col w-full md:w-3/4'>
         <textarea 
           value={updatedAbout} 
           onChange={(e) => setUpdatedAbout(e.target.value)}
-          cols={70} 
-          rows={10} 
-          className='rounded p-2 text-xs text-slate-800 bg-white' 
+          className='rounded p-2 text-base text-slate-800 bg-white resize-none w-full h-32 sm:h-48' 
         />
         <div className='flex justify-start text-xs'>
           <p>{`${characters}/${maxCharacters}`}</p>
