@@ -37,7 +37,7 @@ export default async function UserLayout({
           </button>
         </div>
       </div>
-      <div className='flex col-span-3 justify-center items-center'>
+      <div className='flex col-span-3 justify-center items-center pb-4'>
         {children}
       </div>
     </div>
