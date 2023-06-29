@@ -12,7 +12,7 @@ export default function SkillsEditModule({ isVisible, onClose, children }: {isVi
                     <AiOutlineCloseCircle size={30}/>
                 </button>
             </div>
-            <div className='flex flex-col items-center w-full'>
+            <div className='flex flex-col items-center w-full h-full'>
                 <h2 className='text-3xl uppercase'>Edit your technical skills</h2>
                 <p className='text-xs text-slate-400 p-2 text-center'>List out your programming languages of choice, frameworks, libraries, engines, etc.</p>
                 {children}

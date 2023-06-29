@@ -1,49 +1,73 @@
 'use client'
-import React, { FormEventHandler, useState, useEffect } from 'react'
+import React, { useState } from 'react';
 
-export default function SkillsForm({id}: {id: string}) {
-    const inputStyle = "my-2 p-2 border border-slate-300 rounded w-full"
-    const [skills, setSkills] = useState<string[]>([])
+export default function SkillsForm({ id }: { id: string }) {
+  const inputStyle = "my-2 p-2 border border-slate-300 rounded w-full";
+  const [isAdding, setIsAdding] = useState(false);
+  const [skillValue, setSkillValue] = useState(""); // State for input value
+  const [skills, setSkills] = useState<string[]>([]); // State for skills array
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
-        const { value } = e.target
-        const updatedSkills = [...skills]
-        updatedSkills[index] = value
-        setSkills(updatedSkills)
+  const handleAddSkill = () => {
+    const skill = skillValue.trim();
+
+    if (skill !== "") {
+      setSkills([...skills, skill]); // Add skill to the skills array
+      setSkillValue("") //clear input
     }
 
-    const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-        e.preventDefault()
-        // Handle the submission of skills array
-        console.log(skills)
-    }
+    setIsAdding(false);
+  };
+
+  const handleRemoveSkill = (index: number) => {
+    const updatedSkills = [...skills];
+    updatedSkills.splice(index, 1);
+    setSkills(updatedSkills);
+  };
 
   return (
-    <form className='mt-4 flex flex-col w-full px-8' onSubmit={handleSubmit}>
-        <div className="md:grid md:grid-cols-2 md:gap-4 justify-between">
-            <div className='text-slate-400 text-sm'>
-                <input type="text" placeholder="Skill 1"    className={inputStyle} value={skills[0] || ''} onChange={(e) => handleInputChange(e, 0)} />
-                <input type="text" placeholder="Skill 2"    className={inputStyle} value={skills[1] || ''} onChange={(e) => handleInputChange(e, 1)} />
-                <input type="text" placeholder="Skill 3"    className={inputStyle} value={skills[2] || ''} onChange={(e) => handleInputChange(e, 2)} />
-                <input type="text" placeholder="Skill 4"    className={inputStyle} value={skills[3] || ''} onChange={(e) => handleInputChange(e, 3)} />
-                <input type="text" placeholder="Skill 5"    className={inputStyle} value={skills[4] || ''} onChange={(e) => handleInputChange(e, 4)} />
-            </div>
-            <div className='text-slate-400 text-sm'>
-                <input type="text" placeholder="Skill 6"    className={inputStyle} value={skills[5] || ''} onChange={(e) => handleInputChange(e, 5)} />
-                <input type="text" placeholder="Skill 7"    className={inputStyle} value={skills[6] || ''} onChange={(e) => handleInputChange(e, 6)} />
-                <input type="text" placeholder="Skill 8"    className={inputStyle} value={skills[7] || ''} onChange={(e) => handleInputChange(e, 7)} />
-                <input type="text" placeholder="Skill 9"    className={inputStyle} value={skills[8] || ''} onChange={(e) => handleInputChange(e, 8)} />
-                <input type="text" placeholder="Skill 10"   className={inputStyle} value={skills[9] || ''} onChange={(e) => handleInputChange(e, 9)} />
-            </div>
+    <form className="mt-4 flex flex-col w-full h-full px-8">
+        <div className='py-2'>
+            <p className='text-xs text-slate-400 p-2 text-center'>Click skills to remove them</p>
+            <ul className='flex flex-wrap'>
+                {skills.map((skill, index) => (
+                <li 
+                    key={index} 
+                    onClick={() => handleRemoveSkill(index)}
+                    className='mx-1 my-2 p-1 px-2 border border-r-2 rounded-2xl border-emerald-700 bg-emerald-700 text-slate-100'
+                >{skill}</li>
+                ))}
+            </ul>
         </div>
-        <div className='flex justify-end mt-4'>
-            <button 
-                type='submit'
-                className="p-2 pl-4 pr-4 text-sm uppercase rounded-full text-slate-100 bg-sky-700"
-            >
-                Submit
-            </button>
-        </div>
+        <div className='py-2'>
+            {!isAdding ? (
+                <button
+                className="p-2 pl-4 pr-4 text-sm uppercase rounded-full text-slate-100 bg-sky-700 w-3/4 sm:w-2/6"
+                onClick={() => {
+                    setIsAdding(true);
+                }}
+                >
+                Add Skill
+                </button>
+            ) : (
+                <div>
+                    <input type="text" value={skillValue} onChange={(e) => setSkillValue(e.target.value)} className={inputStyle} />
+                    <button
+                        className="p-2 pl-4 pr-4 text-sm uppercase rounded-full text-slate-100 bg-sky-700 w-1/4"
+                        onClick={handleAddSkill} // Call handleAddSkill on button click
+                    >
+                        Add Skill
+                    </button>
+                </div>
+            )}
+      </div>
+      <div className='flex flex-col h-full sm:items-end'>
+        <button
+            className="p-2 pl-4 pr-4 sm:mb-2 text-sm uppercase rounded-full text-slate-100 bg-green-700 w-3/4 sm:w-2/6"
+            onClick={handleAddSkill} // Call handleAddSkill on button click
+        >
+            Save Changes
+        </button>
+      </div>
     </form>
-  )
+  );
 }
