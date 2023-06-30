@@ -1,10 +1,10 @@
 import React from 'react'
 
 export default async function SkillsInfo(props: {id: string}) {
-
+  
     const data = await fetch(`http://127.0.0.1:3000/api/user/${props.id}`)
     const currentUser = await data.json()
-
+    const skills = JSON.parse(currentUser.skills)
   return (
     <>
         <div className='flex w-full p-4 border-b-2 items-center'>
@@ -14,9 +14,13 @@ export default async function SkillsInfo(props: {id: string}) {
             <h4 className='pt-1 font-normal text-slate-400 text-xs'>Full Stack Web Developer</h4>
           </div>
         </div>
-        <p className='text-sm m-4 whitespace-pre-wrap'>
-          List of Technical Skills
-        </p>
+        <ul className='text-sm m-4 whitespace-pre-wrap'>
+          {
+            skills.map((skill:string, index:number) => (
+              <li key={index}>{skill}</li>
+            ))
+          }
+        </ul>
     </>
   )
 }

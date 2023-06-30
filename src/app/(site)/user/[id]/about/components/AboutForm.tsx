@@ -27,7 +27,7 @@ export default function AboutForm({id}: {id: string}) {
     e.preventDefault()
     
     if (characters <= maxCharacters) {
-      await fetch(`http://localhost:3000/api/user/${id}`, {
+      await fetch(`http://localhost:3000/api/user/${id}/about`, {
         method: 'PATCH',                                                              
         body: JSON.stringify({
           about: updatedAbout 
