@@ -1,11 +1,21 @@
 'use client'
 import React, { FormEventHandler, useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
-export default function SkillsForm({ id }: { id: string }) {
+export default function SkillsForm({ id, onClose }: { id: string, onClose:() => void }) {
   const inputStyle = "my-2 p-2 border border-slate-300 rounded w-full";
   const [isAdding, setIsAdding] = useState(false);
   const [skillValue, setSkillValue] = useState(""); // State for input value
   const [skills, setSkills] = useState<string[]>([]); // State for skills array
+  const router = useRouter()
+
+  useEffect(() => {
+    // Fetch the previous value of 'about' from the server and set it as the initial value
+    fetch(`http://localhost:3000/api/user/${id}`)
+      .then(response => response.json())
+      .then(data => setSkills(JSON.parse(data.skills)))
+      .catch(error => console.error(error))
+  }, [id])
 
   const handleAddSkill = () => {
     const skill = skillValue.trim();
@@ -32,7 +42,8 @@ export default function SkillsForm({ id }: { id: string }) {
         skills: JSON.stringify(skills)
       })                             
     })
-    console.log(JSON.stringify(skills))
+    onClose()
+    router.refresh()
   }
 
   return (

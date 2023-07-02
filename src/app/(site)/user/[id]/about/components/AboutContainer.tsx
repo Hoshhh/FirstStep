@@ -33,7 +33,7 @@ export default function AboutContainer({children, id, sessionId}: {children: Rea
         {children}
       </div>
       <AboutEditModule isVisible={showModal} onClose={() => setShowModale(false)} >
-        <AboutForm id={id} />
+        <AboutForm id={id} onClose={() => setShowModale(false)} />
       </AboutEditModule>
     </div>
   )

@@ -1,11 +1,13 @@
 'use client'
 import React, { FormEventHandler, useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
-export default function AboutForm({id}: {id: string}) {
+export default function AboutForm({id, onClose}: {id: string, onClose:() => void}) {
   const [updatedAbout, setUpdatedAbout] = useState("")
   const [showError, setShowError] = useState(false)
   const characters = updatedAbout.length
   const maxCharacters = 1000
+  const router = useRouter()
 
   useEffect(() => {
     if (characters > maxCharacters) {
@@ -38,6 +40,8 @@ export default function AboutForm({id}: {id: string}) {
       setShowError(true)
     }
     setUpdatedAbout("")
+    onClose()
+    router.refresh()
   }
   return (
     <form onSubmit={handleSubmit} className='mt-4 flex flex-col w-full md:w-3/4'>

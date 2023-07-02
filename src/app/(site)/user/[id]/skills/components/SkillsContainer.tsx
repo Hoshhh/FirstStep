@@ -33,7 +33,7 @@ export default function SkillsContainer({children, id, sessionId}: {children: Re
         {children}
       </div>
       <SkillsEditModule isVisible={showModal} onClose={() => setShowModale(false)} >
-        <SkillsForm id={id} />
+        <SkillsForm id={id} onClose={() => setShowModale(false)} />
       </SkillsEditModule>
     </div>
   )
