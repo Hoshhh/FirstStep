@@ -74,7 +74,7 @@ export default function SkillsForm({ id, onClose }: { id: string, onClose:() => 
                 <div>
                     <input type="text" value={skillValue} onChange={(e) => setSkillValue(e.target.value)} className={inputStyle} />
                     <button
-                        className="p-2 pl-4 pr-4 text-sm uppercase rounded-full text-slate-100 bg-sky-700 w-1/4"
+                        className="p-2 pl-4 pr-4 text-sm uppercase rounded-full text-slate-100 bg-sky-700 w-3/4 sm:w-2/6"
                         onClick={handleAddSkill} // Call handleAddSkill on button click
                     >
                         Add Skill

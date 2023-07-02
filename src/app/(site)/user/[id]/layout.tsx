@@ -25,7 +25,7 @@ export default async function UserLayout({
           <ul className='grid grid-rows-5 content-between h-full'>
             <Link href={`/user/${params.id}/about`} >About</Link>
             <Link href={`/user/${params.id}/skills`} >Technical Skills</Link>
-            <li>Links</li>
+            <Link href={`/user/${params.id}/links`} >Links</Link>
             <li>Availability</li>
             <li>CV/Resume</li>
           </ul>
