@@ -15,7 +15,6 @@ export default function LinksForm({ id, onClose }: { id: string, onClose:() => v
     fetch(`http://localhost:3000/api/user/${id}`)
       .then(response => response.json())
       .then(data => {
-            //ADD THIS CHECK TO THE OTHER SECTIONS OR YOU WILL GET AN ERROR WITH MAPPING
             if (data.links != null) {
                 const parsedLinks = JSON.parse(data.links);
                 setLinks(parsedLinks);
