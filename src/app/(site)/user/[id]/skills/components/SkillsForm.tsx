@@ -13,7 +13,11 @@ export default function SkillsForm({ id, onClose }: { id: string, onClose:() => 
     // Fetch the previous value of 'about' from the server and set it as the initial value
     fetch(`http://localhost:3000/api/user/${id}`)
       .then(response => response.json())
-      .then(data => setSkills(JSON.parse(data.skills)))
+      .then(data => {
+        if (data.skills != null) {
+          setSkills(JSON.parse(data.skills))
+        }
+      })
       .catch(error => console.error(error))
   }, [id])
 
