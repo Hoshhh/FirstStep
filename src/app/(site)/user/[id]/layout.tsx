@@ -26,7 +26,7 @@ export default async function UserLayout({
             <Link href={`/user/${params.id}/about`} >About</Link>
             <Link href={`/user/${params.id}/skills`} >Technical Skills</Link>
             <Link href={`/user/${params.id}/links`} >Links</Link>
-            <li>Availability</li>
+            <Link href={`/user/${params.id}/availability`} >Availability</Link>
             <li>CV/Resume</li>
           </ul>
         </div>
