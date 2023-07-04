@@ -17,7 +17,6 @@ export default function AboutContainer({children, id, sessionId}: {children: Rea
         }
     }, [sessionId, id])
     
-    console.log({id, sessionId})
   return (
     <div className='flex flex-col w-3/4 items-center'>
       <h2 className='tracking-widest mb-4'>About Me</h2>
