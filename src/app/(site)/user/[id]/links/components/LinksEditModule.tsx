@@ -14,7 +14,7 @@ export default function LinksEditModule({ isVisible, onClose, children }: {isVis
             </div>
             <div className='flex flex-col items-center w-full h-full'>
                 <h2 className='text-3xl uppercase'>Edit your Links</h2>
-                <p className='text-xs text-slate-400 p-2 text-center'>Give links to your website, github, projects, etc.</p>
+                <p className='text-xs text-slate-400 p-2 text-center'>Give links to your website, github, and LinkedIn.</p>
                 {children}
             </div>
         </div>

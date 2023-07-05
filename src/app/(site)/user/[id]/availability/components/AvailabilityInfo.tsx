@@ -17,13 +17,13 @@ export default async function AvailabilityInfo(props: {id: string}) {
         </div>
         <div>
           <p className='text-base m-4 pt-1 whitespace-pre-wrap'>
-            Full time/Part time: <li className='font-bold'>{availability[0]}</li>
+            Full time/Part time: <span className='flex font-bold'>{availability[0]}</span>
           </p>
           <p className='text-base m-4 pt-1 whitespace-pre-wrap'>
-            Remote/On-site: <li className='font-bold'>{availability[1]}</li>
+            Remote/On-site: <span className='flex font-bold'>{availability[1]}</span>
           </p>
           <p className='text-base m-4 pt-1 whitespace-pre-wrap'>
-            Relocation: <li className='font-bold'>{availability[2]}</li>
+            Relocation: <span className='flex font-bold'>{availability[2]}</span>
           </p>
         </div>
     </>
