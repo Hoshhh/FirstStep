@@ -13,7 +13,6 @@ export default async function Page({ params }: {
     
   return (
     <AboutContainer sessionId={session?.user.id} id={params.id}>
-      {/* @ts-expect-error Server Component */}
       <AboutInfo id={params.id} />
     </AboutContainer>
   )
