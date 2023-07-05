@@ -1,7 +1,5 @@
-import Image from 'next/image'
 import Hero from '@/components/Hero'
 import Developers from '@/components/Developers'
-import User from '@/components/User'
 import { getServerSession } from 'next-auth'
 import { authOptions } from './api/auth/[...nextauth]/route'
 import prisma from '../app/lib/prismadb'
@@ -25,7 +23,6 @@ export default async function Home() {
       <Navbar />
       <Hero />
       <Developers />
-      <User />
     </div>
   )
 }

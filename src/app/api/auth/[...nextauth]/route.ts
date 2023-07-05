@@ -3,9 +3,6 @@ import prisma from "../../../lib/prismadb"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import GithubProvider from 'next-auth/providers/github'
 import { NextAuthOptions } from "next-auth"
-import { PrismaClient } from "@prisma/client"
-
-//const prisma = new PrismaClient();
 
 export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma),
@@ -16,7 +13,7 @@ export const authOptions: NextAuthOptions = {
         }),
     ],
     callbacks: {
-        async jwt({ token, account, user }) {
+        async jwt({ token, user }) {
             const dbUser = await prisma.user.findFirst({
                 where: {
                     id: token.id
@@ -35,14 +32,6 @@ export const authOptions: NextAuthOptions = {
                 email: dbUser.email,
                 image: dbUser.image,
             }
-
-            /*
-            if (account) {
-            token.accessToken = account.access_token
-            token.id = user?.id
-            token.role = user.role
-            }
-            return token*/
         },
         async session({ session, token }) {
             if (token) {

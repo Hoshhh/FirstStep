@@ -11,7 +11,6 @@ export default function LinksForm({ id, onClose }: { id: string, onClose:() => v
   const router = useRouter()
 
   useEffect(() => {
-    // Fetch the previous value of 'about' from the server and set it as the initial value
     fetch(`http://localhost:3000/api/user/${id}`)
       .then(response => response.json())
       .then(data => {
@@ -40,7 +39,6 @@ export default function LinksForm({ id, onClose }: { id: string, onClose:() => v
     })
     onClose()
     router.refresh()
-    console.log(newLinks)
   }
 
   return (

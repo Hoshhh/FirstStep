@@ -1,9 +1,8 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineMail } from "react-icons/ai";
-import { FaLinkedinIn, FaGithub, FaTwitter } from "react-icons/fa";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { signIn } from "next-auth/react"
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -50,9 +49,7 @@ const Navbar = () => {
               </li>
             </Link>
           </ul>
-          <Link href="/">
-            <button className="ml-10  p-2 text-sm uppercase rounded-full text-slate-100 bg-sky-700">Sign Up</button>
-          </Link>
+          <button onClick={() => signIn()} className="hidden md:flex ml-10  p-2 text-sm uppercase rounded-full text-slate-100 bg-sky-700">Sign In</button>
           <div onClick={handleNav} className="md:hidden">
             <AiOutlineMenu size={25} />
           </div>
@@ -85,7 +82,6 @@ const Navbar = () => {
               </div>
             </div>
             <div className="border-b border-gray-300 my-4">
-              <p className="w-[85%] md:w-[90%] py-4">Build Together</p>
             </div>
           </div>
           <div className="py-y flex flex-col">
@@ -106,25 +102,7 @@ const Navbar = () => {
                 </li>
               </Link>
             </ul>
-            <div className="pt-40">
-              <p className="uppercase tracking-widest text-slate-800">
-                Lets Connect
-              </p>
-              <div className=" flex items-center justify-between my-4 w-full sm:w-[80%]">
-                <div className=" rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
-                  <FaLinkedinIn />
-                </div>
-                <div className=" rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
-                  <FaGithub />
-                </div>
-                <div className=" rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
-                  <FaTwitter />
-                </div>
-                <div className=" rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
-                  <AiOutlineMail />
-                </div>
-              </div>
-            </div>
+            <button onClick={() => signIn()} className="mt-12 p-2 text-sm uppercase rounded-full text-slate-100 bg-sky-700">Sign In</button>
           </div>
         </div>
       </div>

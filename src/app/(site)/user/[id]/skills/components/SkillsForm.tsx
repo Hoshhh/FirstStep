@@ -5,12 +5,11 @@ import { useRouter } from 'next/navigation'
 export default function SkillsForm({ id, onClose }: { id: string, onClose:() => void }) {
   const inputStyle = "my-2 p-2 border border-slate-300 rounded w-full";
   const [isAdding, setIsAdding] = useState(false);
-  const [skillValue, setSkillValue] = useState(""); // State for input value
-  const [skills, setSkills] = useState<string[]>([]); // State for skills array
+  const [skillValue, setSkillValue] = useState("");
+  const [skills, setSkills] = useState<string[]>([]);
   const router = useRouter()
 
   useEffect(() => {
-    // Fetch the previous value of 'about' from the server and set it as the initial value
     fetch(`http://localhost:3000/api/user/${id}`)
       .then(response => response.json())
       .then(data => {
@@ -25,8 +24,8 @@ export default function SkillsForm({ id, onClose }: { id: string, onClose:() => 
     const skill = skillValue.trim();
 
     if (skill !== "" && skills.length < 10) {
-      setSkills([...skills, skill]); // Add skill to the skills array
-      setSkillValue("") //clear input
+      setSkills([...skills, skill]);
+      setSkillValue("")
     }
 
     setIsAdding(false);
@@ -79,7 +78,7 @@ export default function SkillsForm({ id, onClose }: { id: string, onClose:() => 
                     <input type="text" value={skillValue} onChange={(e) => setSkillValue(e.target.value)} className={inputStyle} />
                     <button
                         className="p-2 pl-4 pr-4 text-sm uppercase rounded-full text-slate-100 bg-sky-700 w-3/4 sm:w-2/6"
-                        onClick={handleAddSkill} // Call handleAddSkill on button click
+                        onClick={handleAddSkill}
                     >
                         Add Skill
                     </button>

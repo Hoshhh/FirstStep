@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import { FaEdit } from "react-icons/fa"
 import AvailabilityEditModule from "./AvailabilityEditModule"
 import AvailabilityForm from "./AvailabilityForm"
 
@@ -17,7 +16,6 @@ export default function AvailabilityContainer({children, id, sessionId}: {childr
         }
     }, [sessionId, id])
     
-    //console.log({id, sessionId})
   return (
     <div className='flex flex-col w-3/4 items-center'>
       <h2 className='tracking-widest mb-4'>Availability</h2>
@@ -29,7 +27,6 @@ export default function AvailabilityContainer({children, id, sessionId}: {childr
         : ""
       }
       <div className="w-full h-auto m-auto shadow-xl shadow-gray-400 rounded-xl flex flex-col justify-center p-2 hover:scale-105 ease-in duration-300">
-        {/*isUser ? <div className="flex justify-end"><FaEdit size={30} className="text-sky-700" /></div> : ""*/}
         {children}
       </div>
       <AvailabilityEditModule isVisible={showModal} onClose={() => setShowModale(false)} >

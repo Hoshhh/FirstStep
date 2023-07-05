@@ -5,6 +5,7 @@ import { FaSignOutAlt } from 'react-icons/fa'
 import ProfileHeader from './components/ProfileHeader'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import SignoutButton from './components/SignoutButton'
 
 export default async function UserLayout({
     children,
@@ -18,7 +19,7 @@ export default async function UserLayout({
   return (
     <div className="md:grid md:grid-cols-4 md:gap-4 md:h-screen">
       <div className='flex flex-col col-span-1 border-r-2 items-center'>
-        <h2 className='text-2xl pt-8'>FirstStepTech</h2>
+        <Link href="/" className='text-2xl pt-8'>FirstStepTech</Link>
         <ProfileHeader id={params.id} sessionId={session?.user.id}/>
         <div className='pt-12 h-full'>
           <ul className='grid grid-rows-5 content-between h-full'>
@@ -28,12 +29,7 @@ export default async function UserLayout({
             <Link href={`/user/${params.id}/availability`} >Availability</Link>
           </ul>
         </div>
-        <div className='flex mb-12 mt-8 items-center'>
-          <button className='flex items-center p-2 border-2 border-slate-200 rounded-full text-sky-800'>
-            <FaSignOutAlt size={30} />
-            <p className='ml-2'>Sign out</p>
-          </button>
-        </div>
+        <SignoutButton />
       </div>
       <div className='flex col-span-3 justify-center items-center pb-4'>
         {children}

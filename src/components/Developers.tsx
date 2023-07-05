@@ -13,8 +13,6 @@ const DevTab = () => {
                     <li className="py-2">Link your socials and portfolio to showcase to employers what you've been working on.</li>
                     <li className="py-2">Show off a list of all the languages/technologies you work with.</li>
                     <li className="py-2">List if you're looking for part time or full time positions, and if you're looking to work remotely, on-site, or both.</li>
-                    <li className="py-2">Upload your resume/cv so potential employers can easily view them.</li>
-                    <li className="py-2">Make posts about what you've been working on for both you and potential employers to see.</li>
                 </ul>
             </div>
             <div className="flex flex-col md:items-center md:justify-center md:text-center">
@@ -42,7 +40,6 @@ const RecruitTab = () => {
                     <li className="py-2">Gain access to an entire database full of candidates</li>
                     <li className="py-2">Freely view any applicant's profile.</li>
                     <li className="py-2">Filter through applicants based on a variety of options.</li>
-                    <li className="py-2">Easily download and view applicant's resumes/cv's.</li>
                     <li className="py-2">You will be showcased the most active developers in the community.</li>
                     <li className="py-2">If you find that an applicant has been recently hired, you can mark them as hired so you will see different candidates.</li>
                 </ul>

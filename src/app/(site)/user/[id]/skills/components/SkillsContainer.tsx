@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import { FaEdit } from "react-icons/fa"
 import SkillsEditModule from "./SkillsEditModule"
 import SkillsForm from "./SkillsForm"
 
@@ -29,7 +28,6 @@ export default function SkillsContainer({children, id, sessionId}: {children: Re
         : ""
       }
       <div className="w-full m-auto shadow-xl shadow-gray-400 rounded-xl flex flex-col justify-center p-2 hover:scale-105 ease-in duration-300">
-        {/*isUser ? <div className="flex justify-end"><FaEdit size={30} className="text-sky-700" /></div> : ""*/}
         {children}
       </div>
       <SkillsEditModule isVisible={showModal} onClose={() => setShowModale(false)} >

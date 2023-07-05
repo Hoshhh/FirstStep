@@ -10,7 +10,6 @@ export default function AvailabilityForm({id, onClose}: {id: string, onClose:() 
     const router = useRouter()
 
   useEffect(() => {
-    // Fetch the previous value of 'about' from the server and set it as the initial value
     fetch(`http://localhost:3000/api/user/${id}`)
       .then(response => response.json())
       .then(data => {
@@ -36,9 +35,7 @@ export default function AvailabilityForm({id, onClose}: {id: string, onClose:() 
     })
     onClose()
     router.refresh()
-    console.log(newAvailability)
   }
-  console.log(workValue)
  
   return (
     <form onSubmit={handleSubmit} className='mt-4 flex flex-col w-full md:w-3/4'>
@@ -73,7 +70,7 @@ export default function AvailabilityForm({id, onClose}: {id: string, onClose:() 
             >
                 Save Changes
             </button>
-      </div>
+        </div>
     </form>
   )
 }

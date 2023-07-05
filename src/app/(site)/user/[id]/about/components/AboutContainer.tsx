@@ -28,7 +28,6 @@ export default function AboutContainer({children, id, sessionId}: {children: Rea
         : ""
       }
       <div className="w-full h-auto m-auto shadow-xl shadow-gray-400 rounded-xl flex flex-col justify-center p-2 hover:scale-105 ease-in duration-300">
-        {/*isUser ? <div className="flex justify-end"><FaEdit size={30} className="text-sky-700" /></div> : ""*/}
         {children}
       </div>
       <AboutEditModule isVisible={showModal} onClose={() => setShowModale(false)} >
