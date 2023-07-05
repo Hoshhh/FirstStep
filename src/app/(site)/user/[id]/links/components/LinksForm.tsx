@@ -11,7 +11,7 @@ export default function LinksForm({ id, onClose }: { id: string, onClose:() => v
   const router = useRouter()
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/user/${id}`)
+    fetch(`${process.env.APP_URL}/api/user/${id}`)
       .then(response => response.json())
       .then(data => {
             if (data.links != null) {
@@ -31,7 +31,7 @@ export default function LinksForm({ id, onClose }: { id: string, onClose:() => v
     const newLinks = [ portfolioValue, githubValue, linkedinValue ];
 
     setLinks(newLinks);
-    await fetch(`http://localhost:3000/api/user/${id}/links`, {
+    await fetch(`${process.env.APP_URL}/api/user/${id}/links`, {
       method: 'PATCH',                                                              
       body: JSON.stringify({
         links: JSON.stringify(newLinks)

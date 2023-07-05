@@ -10,7 +10,7 @@ export default function AvailabilityForm({id, onClose}: {id: string, onClose:() 
     const router = useRouter()
 
     useEffect(() => {
-    fetch(`http://localhost:3000/api/user/${id}`)
+    fetch(`${process.env.APP_URL}/api/user/${id}`)
       .then(response => response.json())
       .then(data => {
             if (data.firstName != null) {
@@ -28,7 +28,7 @@ export default function AvailabilityForm({id, onClose}: {id: string, onClose:() 
 
   const handleSubmit:FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
-    await fetch(`http://localhost:3000/api/user/${id}/header`, {
+    await fetch(`${process.env.APP_URL}/api/user/${id}/header`, {
       method: 'PATCH',                                                              
       body: JSON.stringify({
         firstName: firstNameValue,

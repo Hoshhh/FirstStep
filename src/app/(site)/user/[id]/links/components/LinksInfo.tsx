@@ -2,7 +2,7 @@ import React from 'react'
 
 export default async function SkillsInfo(props: {id: string}) {
   
-    const data = await fetch(`http://127.0.0.1:3000/api/user/${props.id}`)
+    const data = await fetch(`${process.env.APP_URL}/api/user/${props.id}`)
     const currentUser = await data.json()
     const links = JSON.parse(currentUser.links)
 

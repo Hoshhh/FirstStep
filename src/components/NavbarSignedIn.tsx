@@ -24,7 +24,7 @@ const NavbarSignedIn = ({id}: {id: string }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:3000/api/user/${id}`);
+        const response = await fetch(`${process.env.APP_URL}/api/user/${id}`);
         const data = await response.json();
         setCurrentUser(data);
       } catch (error) {

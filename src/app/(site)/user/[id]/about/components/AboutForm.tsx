@@ -19,7 +19,7 @@ export default function AboutForm({id, onClose}: {id: string, onClose:() => void
 
     useEffect(() => {
     // Fetch the previous value of 'about' from the server and set it as the initial value
-    fetch(`http://localhost:3000/api/user/${id}`)
+    fetch(`${process.env.APP_URL}/api/user/${id}`)
       .then(response => response.json())
       .then(data => {
         if (data.about != null) {
@@ -33,7 +33,7 @@ export default function AboutForm({id, onClose}: {id: string, onClose:() => void
     e.preventDefault()
     
     if (characters <= maxCharacters) {
-      await fetch(`http://localhost:3000/api/user/${id}/about`, {
+      await fetch(`${process.env.APP_URL}/api/user/${id}/about`, {
         method: 'PATCH',                                                              
         body: JSON.stringify({
           about: updatedAbout 
