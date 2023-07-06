@@ -28,7 +28,7 @@ const Navbar = ({id,session}: {id: string, session: Session | null}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${uriBase}/api/user/${id}`);
+        const response = await fetch(`/api/user/${id}`);
         const data = await response.json();
         setCurrentUser(data);
       } catch (error) {
@@ -46,7 +46,7 @@ const Navbar = ({id,session}: {id: string, session: Session | null}) => {
       }
     };
     window.addEventListener("scroll", handleShadow);
-  }, []);
+  }, [id, session, uriBase]);
 
   const handleNav = () => {
     setNav(!nav);

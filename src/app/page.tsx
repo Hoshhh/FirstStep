@@ -9,7 +9,7 @@ import NavbarSignedIn from '@/components/NavbarSignedIn'
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
-  //console.log(session)
+  console.log(session)
 
   let currentUser = null;
   if (session !== null) {
