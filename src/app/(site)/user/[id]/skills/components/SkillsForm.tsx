@@ -9,8 +9,12 @@ export default function SkillsForm({ id, onClose }: { id: string, onClose:() => 
   const [skills, setSkills] = useState<string[]>([]);
   const router = useRouter()
 
+  const uriBase = process.env.NODE_ENV === 'development' 
+   ? 'http://localhost:3000'
+   : process.env.APP_URL
+
   useEffect(() => {
-    fetch(`${process.env.APP_URL}/api/user/${id}`)
+    fetch(`${uriBase}/api/user/${id}`)
       .then(response => response.json())
       .then(data => {
         if (data.skills != null) {
@@ -39,7 +43,7 @@ export default function SkillsForm({ id, onClose }: { id: string, onClose:() => 
 
    const handleSubmit:FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
-    await fetch(`${process.env.APP_URL}/api/user/${id}/skills`, {
+    await fetch(`${uriBase}/api/user/${id}/skills`, {
       method: 'PATCH',                                                              
       body: JSON.stringify({
         skills: JSON.stringify(skills)

@@ -9,6 +9,10 @@ export default function AboutForm({id, onClose}: {id: string, onClose:() => void
   const maxCharacters = 1000
   const router = useRouter()
 
+  const uriBase = process.env.NODE_ENV === 'development' 
+   ? 'http://localhost:3000'
+   : process.env.APP_URL
+
   useEffect(() => {
     if (characters > maxCharacters) {
       setShowError(true)
@@ -19,7 +23,7 @@ export default function AboutForm({id, onClose}: {id: string, onClose:() => void
 
     useEffect(() => {
     // Fetch the previous value of 'about' from the server and set it as the initial value
-    fetch(`${process.env.APP_URL}/api/user/${id}`)
+    fetch(`${uriBase}/api/user/${id}`)
       .then(response => response.json())
       .then(data => {
         if (data.about != null) {
@@ -33,7 +37,7 @@ export default function AboutForm({id, onClose}: {id: string, onClose:() => void
     e.preventDefault()
     
     if (characters <= maxCharacters) {
-      await fetch(`${process.env.APP_URL}/api/user/${id}/about`, {
+      await fetch(`${uriBase}/api/user/${id}/about`, {
         method: 'PATCH',                                                              
         body: JSON.stringify({
           about: updatedAbout 

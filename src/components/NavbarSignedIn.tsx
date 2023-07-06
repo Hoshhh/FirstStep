@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { signOut } from "next-auth/react"
+import type { Session } from "next-auth";
 
 
 type User = {
@@ -15,16 +16,21 @@ type User = {
   firstName?: string;
 };
 
-const NavbarSignedIn = ({id}: {id: string }) => {
+const NavbarSignedIn = ({id, session}: {id: string, session: Session }) => {
   const [nav, setNav] = useState(false);
   const [shadow, setShow] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  //console.log(session)
+
+  const uriBase = process.env.NODE_ENV === 'development' 
+   ? 'http://localhost:3000'
+   : process.env.APP_URL
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.APP_URL}/api/user/${id}`);
+        const response = await fetch(`${uriBase}/api/user/${id}`);
         const data = await response.json();
         setCurrentUser(data);
       } catch (error) {
@@ -47,7 +53,7 @@ const NavbarSignedIn = ({id}: {id: string }) => {
     return () => {
       window.removeEventListener("scroll", handleShadow);
     };
-  }, [id]);
+  }, [session.user.id]);
 
   const handleNav = () => {
     setNav(!nav);

@@ -1,7 +1,11 @@
 import Link from 'next/link'
 
 export default async function ProfileHeader({id, sessionId}: {id: string, sessionId: string }) {
-    const data = await fetch(`${process.env.APP_URL}/api/user/${id}`)
+  const uriBase = process.env.NODE_ENV === 'development' 
+   ? 'http://localhost:3000'
+   : process.env.APP_URL
+
+    const data = await fetch(`${uriBase}/api/user/${id}`)
     const currentUser = await data.json()
     
     

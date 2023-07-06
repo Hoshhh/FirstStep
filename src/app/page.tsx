@@ -9,6 +9,7 @@ import NavbarSignedIn from '@/components/NavbarSignedIn'
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
+  //console.log(session)
 
   let currentUser = null;
   if (session !== null) {
@@ -21,10 +22,10 @@ export default async function Home() {
 
   return (
     <div>
-      {session === null ? (
-        <Navbar />
+      {session ? (
+        <NavbarSignedIn id={session?.user?.id} session={session}/>
       ) : (
-        <NavbarSignedIn id={session?.user?.id} />
+        <Navbar />
       )}
       <Hero />
       <Developers />

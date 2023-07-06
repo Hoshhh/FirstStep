@@ -2,7 +2,11 @@
 export default async function Profile({ params }: {
     params: { id: string }
 }) {
-  const data = await fetch(`${process.env.APP_URL}/api/user/${params.id}`)
+  const uriBase = process.env.NODE_ENV === 'development' 
+   ? 'http://localhost:3000'
+   : process.env.APP_URL
+
+  const data = await fetch(`${uriBase}/api/user/${params.id}`)
   const currentUser = await data.json()
 
   return (
