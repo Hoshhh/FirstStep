@@ -22,11 +22,7 @@ export default async function Home() {
 
   return (
     <div>
-      {session ? (
-        <NavbarSignedIn id={session?.user?.id} session={session}/>
-      ) : (
-        <Navbar />
-      )}
+      <Navbar id={session?.user?.id} session={session} />
       <Hero />
       <Developers />
     </div>
