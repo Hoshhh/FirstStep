@@ -23,7 +23,7 @@ export default function AboutForm({id, onClose}: {id: string, onClose:() => void
 
     useEffect(() => {
     // Fetch the previous value of 'about' from the server and set it as the initial value
-    fetch(`${uriBase}/api/user/${id}`)
+    fetch(`/api/user/${id}`)
       .then(response => response.json())
       .then(data => {
         if (data.about != null) {
@@ -37,7 +37,7 @@ export default function AboutForm({id, onClose}: {id: string, onClose:() => void
     e.preventDefault()
     
     if (characters <= maxCharacters) {
-      await fetch(`${uriBase}/api/user/${id}/about`, {
+      await fetch(`/api/user/${id}/about`, {
         method: 'PATCH',                                                              
         body: JSON.stringify({
           about: updatedAbout 
