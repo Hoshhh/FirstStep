@@ -9,12 +9,8 @@ export default function AvailabilityForm({id, onClose}: {id: string, onClose:() 
     const [relocateValue, setRelocateValue] = useState('');
     const router = useRouter()
 
-    const uriBase = process.env.NODE_ENV === 'development' 
-   ? 'http://localhost:3000'
-   : process.env.APP_URL
-
   useEffect(() => {
-    fetch(`${uriBase}/api/user/${id}`)
+    fetch(`/api/user/${id}`)
       .then(response => response.json())
       .then(data => {
             if (data.availability != null) {
@@ -31,7 +27,7 @@ export default function AvailabilityForm({id, onClose}: {id: string, onClose:() 
   const handleSubmit:FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
     const newAvailability = [ workValue, locationValue, relocateValue ];
-    await fetch(`${uriBase}/api/user/${id}/availability`, {
+    await fetch(`/api/user/${id}/availability`, {
       method: 'PATCH',                                                              
       body: JSON.stringify({
         availability: JSON.stringify(newAvailability)

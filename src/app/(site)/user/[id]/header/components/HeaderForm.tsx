@@ -9,12 +9,8 @@ export default function AvailabilityForm({id, onClose}: {id: string, onClose:() 
     const [roleValue, setRoleValue] = useState('');
     const router = useRouter()
 
-    const uriBase = process.env.NODE_ENV === 'development' 
-   ? 'http://localhost:3000'
-   : process.env.APP_URL
-
     useEffect(() => {
-    fetch(`${uriBase}/api/user/${id}`)
+    fetch(`/api/user/${id}`)
       .then(response => response.json())
       .then(data => {
             if (data.firstName != null) {
@@ -32,7 +28,7 @@ export default function AvailabilityForm({id, onClose}: {id: string, onClose:() 
 
   const handleSubmit:FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
-    await fetch(`${uriBase}/api/user/${id}/header`, {
+    await fetch(`/api/user/${id}/header`, {
       method: 'PATCH',                                                              
       body: JSON.stringify({
         firstName: firstNameValue,

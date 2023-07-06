@@ -9,10 +9,6 @@ export default function AboutForm({id, onClose}: {id: string, onClose:() => void
   const maxCharacters = 1000
   const router = useRouter()
 
-  const uriBase = process.env.NODE_ENV === 'development' 
-   ? 'http://localhost:3000'
-   : process.env.APP_URL
-
   useEffect(() => {
     if (characters > maxCharacters) {
       setShowError(true)

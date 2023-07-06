@@ -4,23 +4,17 @@ import { useRouter } from 'next/navigation'
 
 export default function LinksForm({ id, onClose }: { id: string, onClose:() => void }) {
   const inputStyle = "my-2 p-2 border border-slate-300 rounded w-full";
-  const [links, setLinks] = useState<string[]>([]); // State for skills array
   const [portfolioValue, setPortfolioValue] = useState('');
   const [githubValue, setGithubValue] = useState('');
   const [linkedinValue, setLinkedinValue] = useState('');
   const router = useRouter()
 
-  const uriBase = process.env.NODE_ENV === 'development' 
-   ? 'http://localhost:3000'
-   : process.env.APP_URL
-
   useEffect(() => {
-    fetch(`${uriBase}/api/user/${id}`)
+    fetch(`/api/user/${id}`)
       .then(response => response.json())
       .then(data => {
             if (data.links != null) {
                 const parsedLinks = JSON.parse(data.links);
-                setLinks(parsedLinks);
                 setPortfolioValue(parsedLinks[0] || '');
                 setGithubValue(parsedLinks[1] || '');
                 setLinkedinValue(parsedLinks[2] || '');
@@ -34,8 +28,7 @@ export default function LinksForm({ id, onClose }: { id: string, onClose:() => v
     e.preventDefault()
     const newLinks = [ portfolioValue, githubValue, linkedinValue ];
 
-    setLinks(newLinks);
-    await fetch(`${uriBase}/api/user/${id}/links`, {
+    await fetch(`/api/user/${id}/links`, {
       method: 'PATCH',                                                              
       body: JSON.stringify({
         links: JSON.stringify(newLinks)
