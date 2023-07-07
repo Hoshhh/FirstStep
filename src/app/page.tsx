@@ -11,15 +11,6 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
   console.log(session)
 
-  let currentUser = null;
-  if (session !== null) {
-    currentUser = await prisma.user.findUnique({
-      where: {
-        id: session?.user?.id
-      }
-    });
-  }
-
   return (
     <div>
       <Navbar id={session?.user?.id} session={session} />
