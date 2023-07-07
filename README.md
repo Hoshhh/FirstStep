@@ -8,6 +8,8 @@ One of the biggest problems that junior devs face when searching for jobs is whe
 
 After using this project as a learning opportunity, I feel ready to dive into the real project. There was no planning, so the demo architecture isn't ideal. Below is how the demo ended up.
 
+## Demo
+
 ![Main Page](./public/readme/1.PNG)
 
 ![Signed In](./public/readme/2.PNG)
