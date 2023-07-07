@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## What is FirstStepTech
 
 This app mockup was made as a proof of concept of a platform used by junior developers and recruiters. It's purpose was to make finding junior developers more accessible to recruiters and help alleviate some of the problems that many people find when job searching.
