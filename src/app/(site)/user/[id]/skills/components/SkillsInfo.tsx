@@ -8,6 +8,16 @@ export default async function SkillsInfo(props: {id: string}) {
     const data = await fetch(`${uriBase}/api/user/${props.id}`)
     const currentUser = await data.json()
     const skills = JSON.parse(currentUser.skills)
+
+    const showSkills = () => {
+      if (skills != null) {
+        return (
+          skills.map((skill:string, index:number) => (
+              <li key={index}>{skill}</li>
+          ))
+        )
+      }
+    }
   return (
     <>
         <div className='flex w-full p-4 border-b-2 items-center'>
@@ -19,9 +29,7 @@ export default async function SkillsInfo(props: {id: string}) {
         </div>
         <ul className='text-sm m-4 whitespace-pre-wrap'>
           {
-            skills.map((skill:string, index:number) => (
-              <li key={index}>{skill}</li>
-            ))
+            showSkills()
           }
         </ul>
     </>
